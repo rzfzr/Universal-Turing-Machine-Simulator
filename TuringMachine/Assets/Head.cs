@@ -1,6 +1,8 @@
 ﻿/*
 * Brought into existence by rzfzr
 */
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +14,8 @@ public class Head : MonoBehaviour {
 	public Transform tape;
 
 	public GameObject s0, s1, ss;
+
+	public float stepSpeed = 0.2f;
 	#endregion
 
 	#region Setup
@@ -34,7 +38,10 @@ public class Head : MonoBehaviour {
 
 	#endregion
 
-
+	public IEnumerator WasteTime(float seconds,Action nextMethod) {
+		yield return new WaitForSeconds(seconds);
+		nextMethod();
+	}
 
 	public void DestroySquare() {
 		RaycastHit hit;
@@ -53,7 +60,7 @@ public class Head : MonoBehaviour {
 		Invoke("ReadSquare",0.05f);
 	}
 
-	public void SpawnSquare(int i) {
+	public void Write(int i) {
 		GameObject temp;
 		if (i == 0) {
 			temp = Instantiate(s0);
@@ -68,23 +75,27 @@ public class Head : MonoBehaviour {
 		Invoke("ReadSquare",0.05f);
 
 	}
-	public void ReadSquare() {
+	public int ReadSquare() {
 		RaycastHit hit;
 		Ray ray = new Ray(transform.position,Vector3.down);
 		if (Physics.Raycast(ray,out hit)) {
 			if (hit.transform.tag == "s0") {
 				current.text = "0";
 				Debug.DrawLine(ray.origin,hit.point,Color.blue);
+				return 0;
 
 			} else if (hit.transform.tag == "s1") {
 				Debug.DrawLine(ray.origin,hit.point,Color.green);
 				current.text = "1";
+				return 1;
 			} else {
 				Debug.DrawLine(ray.origin,hit.point,Color.grey);
 				current.text = " ";
+				return 2;
 			}
 
 
 		}
+		return 2;
 	}
 }

@@ -15,7 +15,7 @@ public class SpawnTape : MonoBehaviour {
 
 	#region Setup
 	void Start() {
-		input.text = "1010110001";
+		input.text = "111111";
 	}
 
 	#endregion
