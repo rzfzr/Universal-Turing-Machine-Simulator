@@ -15,7 +15,7 @@ public class Head : MonoBehaviour {
 
 	public GameObject s0, s1, ss;
 
-	public float stepSpeed = 0.2f;
+	public float stepSpeed = 0.4f;
 	#endregion
 
 	#region Setup
