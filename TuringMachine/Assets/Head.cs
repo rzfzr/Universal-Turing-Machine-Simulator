@@ -63,17 +63,11 @@ public class Head : MonoBehaviour {
 		Invoke("ReadSquare",0.05f);
 	}
 	public void MoveC(char dir) {
-		int i;
-
 		if (dir == 'r') {
-			i = 1;
+			Move(1);
 		} else if (dir == 'l') {
-			i = -1;
-		} else {
-			i = 0;
+			Move(-1);
 		}
-		tape.transform.position -= new Vector3(i,0,0);
-		Invoke("ReadSquare",0.05f);
 	}
 
 	public void Write(int i) {

@@ -73,16 +73,16 @@ public class Even1s : MonoBehaviour {
 		DoAfterStep(Q4);
 	}
 
+	void Q3() {
+		print("Q3" + h.ReadSquare());
+		h.Move(1);	
+		DoAfterStep(Q5);
+	}
 	void Q4() {
 		print("Q4" + h.ReadSquare());
 		h.Write(0);
 	}
 
-	void Q3() {
-		print("Q3" + h.ReadSquare());
-		h.Move(1);
-		DoAfterStep(Q5);
-	}
 
 	void Q5() {
 		print("Q5" + h.ReadSquare());
