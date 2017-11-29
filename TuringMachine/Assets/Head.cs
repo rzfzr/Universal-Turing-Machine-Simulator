@@ -38,10 +38,10 @@ public class Head : MonoBehaviour {
 
 	#endregion
 
-	public IEnumerator WasteTime(float seconds,Action nextMethod) {
-		yield return new WaitForSeconds(seconds);
-		nextMethod();
-	}
+	//public IEnumerator WasteTime(float seconds,Action nextMethod) {
+	//	yield return new WaitForSeconds(seconds);
+	//	nextMethod();
+	//}
 
 	public void DestroySquare() {
 		RaycastHit hit;

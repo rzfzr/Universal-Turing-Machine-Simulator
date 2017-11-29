@@ -118,6 +118,7 @@ public class Sum : MonoBehaviour {
 		} else {
 
 			h.Move(1);
+			DoAfterStep(Q4);
 		}
 		//h.Move(1);
 		//DoAfterStep(Q5);
@@ -125,14 +126,58 @@ public class Sum : MonoBehaviour {
 
 	void Q4() {
 		print("Q4" + h.ReadSquare());
-		h.Write(0);
+		if (h.ReadSquare() == 0 || h.ReadSquare() == 1) {
+			h.Move(1);
+			DoAfterStep(Q4);
+		} else {
+			h.Move(-1);
+			DoAfterStep(Q5);
+		}
+
+		//h.Write(0);
 	}
 
 	void Q5() {
 		print("Q5" + h.ReadSquare());
-		h.Write(1);
+		if (h.ReadSquare() == 1) {
+			h.DestroySquare();
+			h.Write(0);
+			h.Move(-1);
+			DoAfterStep(Q5);
+		} else if (h.ReadSquare() == 0) {
+			h.DestroySquare();
+			h.Write(1);
+			h.Move(-1);
+			DoAfterStep(Q6);
+
+		}
+
 	}
 
+	void Q6() {
+		print("Q6" + h.ReadSquare());
+		if (h.ReadSquare() == 0 || h.ReadSquare() == 1) {
+			h.Move(-1);
+			DoAfterStep(Q6);
+		} else {
+			h.Move(-1);
+			DoAfterStep(Q7);
+		}
+
+
+	}
+	void Q7() {
+		print("Q7" + h.ReadSquare());
+		if (h.ReadSquare() == 0 || h.ReadSquare() == 1) {
+			h.Move(-1);
+			DoAfterStep(Q7);
+		} else {
+			h.Move(1);
+			DoAfterStep(Q0);
+		}
+
+
+	}
 
 
 	void DoAfterStep(Action nextMethod) {
