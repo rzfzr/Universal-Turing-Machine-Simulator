@@ -15,7 +15,7 @@ public class Head : MonoBehaviour {
 
 	public GameObject s0, s1, ss;
 
-	public float stepSpeed = 0.4f;
+	public float stepSpeed = 0.8f;
 	#endregion
 
 	#region Setup
@@ -47,7 +47,10 @@ public class Head : MonoBehaviour {
 		RaycastHit hit;
 		Ray ray = new Ray(transform.position,Vector3.down);
 		if (Physics.Raycast(ray,out hit)) {
-			Destroy(hit.transform.gameObject);
+			if (hit.transform.tag == "s0" || hit.transform.tag == "s1" || hit.transform.tag == "ss") {
+				Destroy(hit.transform.gameObject);
+
+			}
 		}
 
 
@@ -57,6 +60,19 @@ public class Head : MonoBehaviour {
 
 	public void Move(int dir) {
 		tape.transform.position -= new Vector3(dir,0,0);
+		Invoke("ReadSquare",0.05f);
+	}
+	public void MoveC(char dir) {
+		int i;
+
+		if (dir == 'r') {
+			i = 1;
+		} else if (dir == 'l') {
+			i = -1;
+		} else {
+			i = 0;
+		}
+		tape.transform.position -= new Vector3(i,0,0);
 		Invoke("ReadSquare",0.05f);
 	}
 
