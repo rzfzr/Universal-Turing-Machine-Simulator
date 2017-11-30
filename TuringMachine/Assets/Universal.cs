@@ -29,7 +29,7 @@ public class Universal : MonoBehaviour {
 	void EvenTest() {
 
 		h0[0].text = "0s3"; h1[0].text = "1r1"; hs[0].text = "ss3";
-		h0[1].text = "0s2"; h1[1].text = "1r0"; hs[1].text = "ss2";
+		h0[1].text = "0s2"; h1[1].text = "1r0"; hs[1].text = "ss	2";
 		h0[2].text = "0r4"; h1[2].text = "1r4"; hs[2].text = "sr4";
 		h0[3].text = "0r5"; h1[3].text = "1r5"; hs[3].text = "sr5";
 		//finals
